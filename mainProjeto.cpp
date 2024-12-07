@@ -23,18 +23,18 @@ Cartela gerarCart(){
 	int limite[COL][2] = {{1, 15}, {16, 30}, {31, 45}, {46, 60}, {61, 75}};
 	
 	for(int col = 0; col < COL; ++col){
-		bool usados[76] = {};//Array usado para rastrear números ja usados nesta coluna
+		bool usados[76] = {};//Array usado para rastrear nÃºmeros ja usados nesta coluna
 		for(int lin = 0; lin < LIN; ++lin){
 			if(col == 2 && lin == 2){//FREE
-				cart.number[lin][col] = -1;//Marcação unica
-				cart.marked = true;// Espaço marcado automaticamente
+				cart.number[lin][col] = -1;//MarcaÃ§Ã£o unica
+				cart.marked = true;// EspaÃ§o marcado automaticamente
 			}else{
 				int num;
 				do{
-					num = rand() % (limite[col][1] - limite[col][0] + 1) + limite[col][0];//Criação do numero randomico
+					num = rand() % (limite[col][1] - limite[col][0] + 1) + limite[col][0];//CriaÃ§Ã£o do numero randomico
 				}while (usados[num]);//Gera ate achar numeros unicos
 				usados[num] = true;// Marca o numero como esta na coluna
-				cart.number[lin][col] = num;//Atribui o numero no devido espaço
+				cart.number[lin][col] = num;//Atribui o numero no devido espaÃ§o
 			}
 		}
 	}
@@ -80,8 +80,8 @@ Cartela carregarCart(char *nomeArq) {
     if (arquivo) {
         for (int lin = 0; lin < LIN; ++lin) {
             for (int col = 0; col < COL; ++col) {
-                fscanf(arquivo, "%d", &cart.number[lin][col]);  // Lê os números da cartela
-                cart.marked = (cart.number[lin][col] == -1);  // Marca a posição "FREE"
+                fscanf(arquivo, "%d", &cart.number[lin][col]);  // LÃª os nÃºmeros da cartela
+                cart.marked = (cart.number[lin][col] == -1);  // Marca a posiÃ§Ã£o "FREE"
             }
         }
         fclose(arquivo);
@@ -100,8 +100,6 @@ bool marcarNum(Cartela &cart, int numero){
 			if(cart.number[lin][col] == numero){
 				cart.marked = true;//marca o booleano na cartela
 				encontrado = true; //Numero encontrado e marcado
-			}else {
-				cout << "numero nao encontrado!" << endl;
 			}
 		}
 	}
